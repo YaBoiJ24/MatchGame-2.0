@@ -27,6 +27,8 @@ namespace MatchGame_2._0
         DispatcherTimer timer = new DispatcherTimer();
         int tenthsOfSecondsElapsed;
         int matchesFound;
+        int rightPicks = 0;
+        int wrongPicks = 0;
 
         public MainWindow()
         {
@@ -69,7 +71,7 @@ namespace MatchGame_2._0
 
             foreach (TextBlock textblock in mainGrid.Children.OfType<TextBlock>())
             {
-                if (textblock.Name != "timeTextBlock")
+                if (textblock.Tag == null)
                 {
                     int index = random.Next(animalEmoji.Count);
                     string nextEmoji = animalEmoji[index];
@@ -84,24 +86,40 @@ namespace MatchGame_2._0
             matchesFound = 0;
         }
 
+        private void UpdateStats()
+        {
+            textRight.Text = rightPicks.ToString();
+            textWrong.Text = wrongPicks.ToString();
+            float percent = (float)rightPicks / (float)(rightPicks + wrongPicks);
+            textPercent.Text = "%";
+        }
+
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            TextBlock textBlock = sender as TextBlock; if (findingMatch == false)
+            TextBlock textBlock = sender as TextBlock; 
+
+            // not looking for a match
+            if (findingMatch == false)
             {
                 textBlock.Visibility = Visibility.Hidden;
                 lastTextBlockClicked = textBlock;
                 findingMatch = true;
             }
+            // looking and found a match
             else if (textBlock.Text == lastTextBlockClicked.Text)
             {
                 textBlock.Visibility = Visibility.Hidden;
                 findingMatch = false;
                 matchesFound++;
+                rightPicks++;
+                UpdateStats();
             }
             else
             {
                 lastTextBlockClicked.Visibility = Visibility.Visible;
                 findingMatch = false;
+                wrongPicks++;
+                UpdateStats();
             }
         }
 
