@@ -41,5 +41,6 @@
         <TextBlock x:Name="textRight" HorizontalAlignment="Left" Margin="58,17,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="11" Tag="SKIP"/>
         <TextBlock x:Name="textPercent" HorizontalAlignment="Left" Margin="58,48,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="11" Tag="SKIP"/>
         <TextBlock x:Name="textWrong" HorizontalAlignment="Left" Margin="13,4,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="11" Tag="SKIP"/>
+        <TextBlock x:Name="textBest" Grid.Column="3" HorizontalAlignment="Center" Margin="0,44,0,0" Grid.Row="4" TextWrapping="Wrap" Text="N/A" VerticalAlignment="Top" Tag="SKIP" FontSize="12"/>
     </Grid>
 </Window>

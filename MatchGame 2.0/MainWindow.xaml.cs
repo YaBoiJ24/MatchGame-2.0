@@ -29,6 +29,7 @@ namespace MatchGame_2._0
         int matchesFound;
         int rightPicks = 0;
         int wrongPicks = 0;
+        int bestTime = 1000000;
 
         public MainWindow()
         {
@@ -49,6 +50,12 @@ namespace MatchGame_2._0
             {
                 timer.Stop();
                 timeTextBlock.Text = timeTextBlock.Text + " - Play Again?";
+                
+                if (tenthsOfSecondsElapsed < bestTime)
+                {
+                    bestTime = tenthsOfSecondsElapsed;
+                    textBest.Text = (tenthsOfSecondsElapsed /10F).ToString("0.0s")
+                }
             }
 
         }
