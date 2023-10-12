@@ -32,7 +32,7 @@ namespace MatchGame_2._0
         {
             InitializeComponent();
 
-            timer.Interval = TimeSpan.FromSeconds(.1)
+            timer.Interval = TimeSpan.FromSeconds(.1);
             timer.Tick += Timer_Tick;
 
             SetUpGame();
@@ -46,7 +46,7 @@ namespace MatchGame_2._0
             if (matchesFound == 8)
             {
                 timer.Stop();
-                timeTextBlock = timeTextBlock.Text = " Play again?";
+                timeTextBlock.Text = timeTextBlock.Text + " - Play Again?";
             }
         }
 
